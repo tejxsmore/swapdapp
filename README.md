@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Cryptocurrency Swap Project
+
+This repository contains the code for a cryptocurrency swap project similar to Uniswap, built using TypeScript, 0x protocol, and Tailwind CSS.
+URL - https://swapdapp.vercel.app
 
 ## Getting Started
 
-First, run the development server:
+To get started with the project, follow these steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. Clone the repository to your local machine.
+2. Install the necessary dependencies by running `npm install`.
+3. Start the development server using `npm run dev`.
+4. Open your browser and navigate to the specified local host address to see the project in action.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Technologies Used
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- TypeScript: A superset of JavaScript that adds static types to the language, providing improved developer tooling and increased productivity.
+- 0x Protocol: An open protocol that facilitates low-friction peer-to-peer exchange of ERC20 tokens on the Ethereum blockchain.
+- Tailwind CSS: A utility-first CSS framework for rapidly building custom designs without ever leaving your HTML.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Project Structure
 
-## Learn More
+The project is structured as follows:
 
-To learn more about Next.js, take a look at the following resources:
+- `src/`: Contains the TypeScript source code for the project.
+- `public/`: Contains the public assets such as HTML, CSS, and images.
+- `contracts/`: Contains the smart contracts used for interacting with the 0x protocol.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contributing
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+If you'd like to contribute to the project, please follow these steps:
 
-## Deploy on Vercel
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes and commit them with descriptive messages.
+4. Push your branch to your fork and submit a pull request.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgements
+
+- The project makes use of the 0x protocol, which is an essential component of decentralized exchange functionality.
+- Tailwind CSS has been instrumental in creating a sleek and responsive user interface for the project.
+
+We hope you find this project useful and welcome any feedback or contributions!
