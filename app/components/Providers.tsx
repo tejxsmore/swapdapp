@@ -33,7 +33,7 @@ const config = getDefaultConfig({
     ...wallets,
     {
       groupName: "Other",
-      wallets: [argentWallet, trustWallet, ledgerWallet],
+      wallets: [argentWallet, trustWallet],
     },
   ],
   chains: [
