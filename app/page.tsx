@@ -3,7 +3,7 @@ import Swap from "./components/Swap";
 
 export default function Home() {
   return (
-    <div className="bg-pink">
+    <div className="">
       <Navbar />
       <Swap />
     </div>
