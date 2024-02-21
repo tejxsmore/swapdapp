@@ -37,7 +37,7 @@ export default function Swap() {
           />
         </div>
         {token && (
-          <div className="w-full h-80 mb-4 overflow-y-auto rounded-xl bg-white relative top-0 right-0">
+          <div className="w-full h-80 mb-4 overflow-y-auto rounded-xl bg-white cursor-pointer">
             <div className="flex justify-between items-center px-4 py-2 border-b border-grey">
               <p>Tokens</p>
               <p
@@ -73,7 +73,7 @@ export default function Swap() {
             setTokenSwap(true);
             setToken(false);
           }}
-          className="flex items-center p-2 pl-4 bg-white mb-8 rounded-xl"
+          className="flex items-center p-2 pl-4 bg-white mb-4 rounded-xl"
         >
           <h3 className="w-1/2 cursor-pointer">Select a token</h3>
           <input
@@ -83,7 +83,7 @@ export default function Swap() {
           />
         </div>
         {tokenSwap && (
-          <div className="w-full h-80 mb-4 overflow-y-auto rounded-xl bg-white relative top-0 right-0">
+          <div className="w-full h-80 mb-4 overflow-y-auto rounded-xl bg-white cursor-pointer">
             <div className="flex justify-between items-center px-4 py-2 border-b border-grey">
               <p>Tokens</p>
               <p
