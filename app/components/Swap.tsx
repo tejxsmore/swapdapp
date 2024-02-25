@@ -1,5 +1,6 @@
 "use client";
 import useSWR from "swr";
+import Image from "next/image";
 import { Key, useState } from "react";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 
@@ -9,6 +10,8 @@ const fetcher = (url: string | URL | Request) =>
 export default function Swap() {
   const [token, setToken] = useState(false);
   const [tokenSwap, setTokenSwap] = useState(false);
+  const [selectToken, setSelectToken] = useState("");
+  const [selectTokenSwap, setSelectTokenSwap] = useState("");
   const { data } = useSWR(
     `https://tokens.coingecko.com/uniswap/all.json`,
     fetcher
@@ -23,12 +26,14 @@ export default function Swap() {
         <div className="flex items-center p-2 pl-4 bg-white mb-4 rounded-xl">
           <h3
             onClick={() => {
-              setToken(true);
+              setToken(!token);
               setTokenSwap(false);
             }}
-            className="w-1/2 cursor-pointer"
+            className={`w-1/2 cursor-pointer ${
+              selectToken != "" ? "font-medium" : "font-normal"
+            }`}
           >
-            Select a token
+            {selectToken === "" ? "Select a token" : selectToken}
           </h3>
           <input
             type="number"
@@ -50,19 +55,21 @@ export default function Swap() {
             {data?.tokens.map(
               (token: {
                 address: Key | null | undefined;
-                symbol: string | undefined;
-                logoURI: string | undefined;
+                symbol: string;
+                name: string | undefined;
               }) => (
                 <div
                   key={token.address}
                   className="flex px-4 py-2 border-b border-grey"
+                  onClick={() => {
+                    setSelectToken(token?.symbol);
+                    setToken(false);
+                  }}
                 >
-                  <img
-                    src={token.logoURI}
-                    alt="token"
-                    className="w-5 h-5 mr-4 rounded-full"
-                  />
-                  <p>{token.symbol}</p>
+                  <p>
+                    <span className="font-medium">{token.symbol}</span> -{" "}
+                    {token.name}
+                  </p>
                 </div>
               )
             )}
@@ -70,12 +77,18 @@ export default function Swap() {
         )}
         <div
           onClick={() => {
-            setTokenSwap(true);
+            setTokenSwap(!tokenSwap);
             setToken(false);
           }}
           className="flex items-center p-2 pl-4 bg-white mb-4 rounded-xl"
         >
-          <h3 className="w-1/2 cursor-pointer">Select a token</h3>
+          <h3
+            className={`w-1/2 cursor-pointer ${
+              selectTokenSwap != "" ? "font-medium" : "font-normal"
+            }`}
+          >
+            {selectTokenSwap === "" ? "Select a token" : selectTokenSwap}
+          </h3>
           <input
             type="number"
             placeholder="amount"
@@ -96,19 +109,21 @@ export default function Swap() {
             {data?.tokens.map(
               (token: {
                 address: Key | null | undefined;
-                symbol: string | undefined;
-                logoURI: string | undefined;
+                symbol: string;
+                name: string | undefined;
               }) => (
                 <div
                   key={token.address}
                   className="flex px-4 py-2 border-b border-grey"
+                  onClick={() => {
+                    setSelectTokenSwap(token?.symbol);
+                    setTokenSwap(false);
+                  }}
                 >
-                  <img
-                    src={token.logoURI}
-                    alt="token"
-                    className="w-5 h-5 mr-4 rounded-full"
-                  />
-                  <p>{token.symbol}</p>
+                  <p>
+                    <span className="font-medium">{token.symbol}</span> -{" "}
+                    {token.name}
+                  </p>
                 </div>
               )
             )}
