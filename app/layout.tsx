@@ -9,6 +9,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Swap",
   description: "Coin swap",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({

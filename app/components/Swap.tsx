@@ -43,7 +43,7 @@ export default function Swap() {
   const handleConfirmSwap = async (e: { preventDefault: any }) => {
     e.preventDefault();
     console.log(
-      ` ${wholeToken} ${selectToken} ⇛ ${wholeTokenSwap} ${selectTokenSwap}`
+      ` ${wholeToken} ${selectToken.toUpperCase()} → ${wholeTokenSwap} ${selectTokenSwap.toUpperCase()}`
     );
     toast.success("Swap successful");
     setModal(false);
