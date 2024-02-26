@@ -8,10 +8,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Swap",
-  description: "Coin swap",
-  icons: {
-    icon: "/favicon.png",
-  },
+  description:
+    "DEX Cryptocurrency Swap platform to directly swap tokens using Metamask",
 };
 
 export default function RootLayout({
