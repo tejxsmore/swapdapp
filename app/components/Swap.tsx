@@ -42,9 +42,11 @@ export default function Swap() {
 
   const handleConfirmSwap = async (e: { preventDefault: any }) => {
     e.preventDefault();
-    console.log(`${selectToken} : ${wholeToken}`);
-    console.log(`${selectTokenSwap} : ${wholeTokenSwap}`);
+    console.log(
+      ` ${wholeToken} ${selectToken} ⇛ ${wholeTokenSwap} ${selectTokenSwap}`
+    );
     toast.success("Swap successful");
+    setModal(false);
   };
 
   return (
@@ -69,57 +71,47 @@ export default function Swap() {
           modal ? "blur-sm sm:blur-none" : "blur-none"
         }`}
       >
-        <div className="p-2 pl-4 bg-white mb-4 rounded-xl">
-          <div className="flex items-center">
-            <h3
-              onClick={() => {
-                setToken(!token);
-                setTokenSwap(false);
-              }}
-              className={`w-1/2 cursor-pointer ${
-                selectToken != "" ? "font-medium" : "font-normal"
-              }`}
-            >
-              {selectToken === ""
-                ? "Select a token"
-                : selectToken.toUpperCase()}
-            </h3>
-            <input
-              required
-              type="number"
-              id="number"
-              onChange={() => {
-                // const state = document.getElementById(
-                //   "state"
-                // ) as HTMLInputElement;
-                // state.value = "";
-                const number = document.getElementById(
-                  "number"
-                ) as HTMLInputElement;
-                const state = document.getElementById(
-                  "state"
-                ) as HTMLInputElement;
+        <div className="flex items-center p-2 pl-4 bg-white mb-4 rounded-xl">
+          <h3
+            onClick={() => {
+              setToken(!token);
+              setTokenSwap(false);
+            }}
+            className={`w-1/2 cursor-pointer ${
+              selectToken != "" ? "font-medium" : "font-normal"
+            }`}
+          >
+            {selectToken === "" ? "Select a token" : selectToken.toUpperCase()}
+          </h3>
+          <input
+            required
+            type="number"
+            id="number"
+            onChange={() => {
+              // const state = document.getElementById(
+              //   "state"
+              // ) as HTMLInputElement;
+              // state.value = "";
+              const number = document.getElementById(
+                "number"
+              ) as HTMLInputElement;
+              const state = document.getElementById(
+                "state"
+              ) as HTMLInputElement;
 
-                const wholeTokenPrice = tokenPrice * Number(number?.value);
-                setWholeToken(wholeTokenPrice);
+              const wholeTokenPrice = tokenPrice * Number(number?.value);
+              setWholeToken(wholeTokenPrice);
 
-                const wholeTokenSwapPrice = Number(
-                  wholeTokenPrice / tokenSwapPrice
-                );
-                setWholeTokenSwap(wholeTokenSwapPrice);
+              const wholeTokenSwapPrice = Number(
+                wholeTokenPrice / tokenSwapPrice
+              );
+              setWholeTokenSwap(wholeTokenSwapPrice);
 
-                state.value = "" + Math.trunc(wholeTokenSwapPrice);
-              }}
-              placeholder="amount"
-              className="w-1/2 px-4 py-2 bg-light rounded-lg focus:outline-none"
-            />
-          </div>
-          <div className="flex items-center justify-between text-xs pt-2">
-            <p>Balance : 0 {selectToken.toUpperCase()}</p>
-            <p className="bg-light w-1/2 rounded-md truncate p-0.5 px-5">
-              ₹ {(tokenPrice * wholeToken).toLocaleString()}
-            </p>
-          </div>
+              state.value = "" + Math.trunc(wholeTokenSwapPrice);
+            }}
+            placeholder="amount"
+            className="w-1/2 px-4 py-2 bg-light rounded-lg focus:outline-none"
+          />
         </div>
         {token && (
           <div className="w-full h-80 mb-4 overflow-y-auto rounded-xl bg-white cursor-pointer">
@@ -161,39 +153,31 @@ export default function Swap() {
             )}
           </div>
         )}
-        <div
-          onClick={() => {
-            setTokenSwap(!tokenSwap);
-            setToken(false);
-            setTokenSwapPrice(0);
-            const state = document.getElementById("state") as HTMLInputElement;
-            state.value = "";
-          }}
-          className="p-2 pl-4 bg-white mb-4 rounded-xl"
-        >
-          <div className="flex items-center">
-            <h3
-              className={`w-1/2 cursor-pointer ${
-                selectTokenSwap != "" ? "font-medium" : "font-normal"
-              }`}
-            >
-              {selectTokenSwap === ""
-                ? "Select a token"
-                : selectTokenSwap.toUpperCase()}
-            </h3>
-            <input
-              type="number"
-              id="state"
-              placeholder="amount"
-              className="w-1/2 px-4 py-2 bg-light rounded-lg focus:outline-none"
-            />
-          </div>
-          <div className="flex items-center justify-between text-xs pt-2">
-            <p>Balance : 0 {selectTokenSwap.toUpperCase()}</p>
-            <p className="bg-light w-1/2 rounded-md truncate p-0.5 px-5">
-              ₹ {(tokenPrice * wholeToken).toLocaleString()}
-            </p>
-          </div>
+        <div className="flex items-center p-2 pl-4 bg-white mb-4 rounded-xl">
+          <h3
+            onClick={() => {
+              setTokenSwap(!tokenSwap);
+              setToken(false);
+              setTokenSwapPrice(0);
+              const state = document.getElementById(
+                "state"
+              ) as HTMLInputElement;
+              state.value = "";
+            }}
+            className={`w-1/2 cursor-pointer ${
+              selectTokenSwap != "" ? "font-medium" : "font-normal"
+            }`}
+          >
+            {selectTokenSwap === ""
+              ? "Select a token"
+              : selectTokenSwap.toUpperCase()}
+          </h3>
+          <input
+            type="number"
+            id="state"
+            placeholder="amount"
+            className="w-1/2 px-4 py-2 bg-light rounded-lg focus:outline-none"
+          />
         </div>
         {tokenSwap && (
           <div className="w-full h-80 mb-4 overflow-y-auto rounded-xl bg-white cursor-pointer">
@@ -255,7 +239,7 @@ export default function Swap() {
           <div className="py-4">
             <p className="text-xs font-normal pb-2">You pay : </p>
             <div className="flex justify-between">
-              <p className="text-lg font-semibold">
+              <p className="text-lg font-bold">
                 {Number(wholeToken).toFixed(2)}{" "}
               </p>
               <p className="text-lg font-bold">{selectToken.toUpperCase()}</p>
@@ -267,13 +251,16 @@ export default function Swap() {
           <div className="py-4 pb-8">
             <p className="text-xs font-normal pb-2">You get : </p>
             <div className="flex justify-between">
-              <p className="text-lg font-semibold">
+              <p className="text-lg font-bold">
                 {Number(wholeTokenSwap).toFixed(2)}{" "}
               </p>
               <p className="text-lg font-bold">
                 {selectTokenSwap.toUpperCase()}
               </p>
             </div>
+            <p className="text-xs rounded-md py-2">
+              ₹ {(tokenPrice * wholeToken).toLocaleString()}
+            </p>
           </div>
           <button
             type="submit"
