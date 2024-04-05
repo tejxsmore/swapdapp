@@ -50,7 +50,7 @@ export default function Swap() {
   };
 
   return (
-    <div className="bg-dark flex justify-center items-center min-h-screen p-4 ">
+    <div className="bg-dark flex justify-center items-center p-4 ">
       <Toaster
         position="top-center"
         reverseOrder={false}
